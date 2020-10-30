@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-money-keeper"
+    }
+  },
+  "defaultProject": "ng-money-keeper",
+  "cli": {
+    "analytics": false
+  }
 }
