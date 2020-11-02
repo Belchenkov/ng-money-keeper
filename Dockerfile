@@ -1,11 +1,10 @@
-FROM node:13.7.0-alpine
+FROM node:14-alpine
 
-RUN apk add --no-cache curl-dev libzip-dev autoconf build-base gmp-dev coreutils python
+WORKDIR /app
+COPY . /app
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY . /usr/src/app
-
-RUN npm i
+RUN npm install
 
 EXPOSE 3333
+
+CMD ["npm", "run", "dev"]

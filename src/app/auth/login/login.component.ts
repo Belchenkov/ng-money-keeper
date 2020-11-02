@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { UserService } from '../../shared/services/user.service';
+import { User } from '../../shared/models/user.model';
+import { Message } from '../../shared/models/message.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,10 +12,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  message: Message;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.message = new Message('danger', '');
+
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
@@ -24,9 +33,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(event): void {
+  // tslint:disable-next-line:typedef
+  private showMessage(text: string, type: string = 'danger') {
+    this.message = new Message(type, text);
+    window.setTimeout(() => this.message.text = '', 5000);
+  }
+
+  onSubmit(event: Event): void {
     event.preventDefault();
-   // console.log(this.form);
+    const { email, password } = this.form.value;
+
+    this.userService.getUserByEmail(email).subscribe((user: User) => {
+       if (!user || user.password !== password) {
+         this.showMessage('Invalid Credentials');
+         return false;
+      }
+    });
   }
 
 }

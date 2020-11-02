@@ -1,4 +1,10 @@
 <p class="text-xs-center">Войдите для работы</p>
+
+<div
+  *ngIf="message.text"
+  class="alert text-center alert-{{ message.type }}"
+>{{ message.text }}</div>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <div
     [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
