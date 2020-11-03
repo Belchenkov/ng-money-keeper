@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../shared/services/user.service';
 import { User } from '../../shared/models/user.model';
 import { Message } from '../../shared/models/message.model';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
   message: Message;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +52,11 @@ export class LoginComponent implements OnInit {
          this.showMessage('Invalid Credentials');
          return false;
       }
+
+       this.authService.login();
+       window.localStorage.setItem('user', JSON.stringify(user));
+       this.message.text = '';
+       //this.router.navigate(['']);
     });
   }
-
 }
