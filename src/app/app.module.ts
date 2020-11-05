@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from './auth/auth.module';
+import { SystemModule } from './system/system.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './shared/services/user.service';
@@ -16,7 +17,8 @@ import { AuthService } from './shared/services/auth.service';
     BrowserModule,
     AuthModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SystemModule
   ],
   providers: [
     UserService,
