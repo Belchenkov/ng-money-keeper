@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(null, [
         Validators.required,
         Validators.email
-      ]),
+      ], this.forbiddenEmails.bind(this)),
       name: new FormControl(null, [
         Validators.required
       ]),
@@ -60,5 +60,18 @@ export class RegisterComponent implements OnInit {
           }
         });
       });
+  }
+
+  forbiddenEmails(control: FormControl): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.userService.getUserByEmail(control.value)
+        .subscribe((user: User) => {
+          if (user) {
+            resolve({ forbiddenEmail: true });
+          } else {
+            resolve(null);
+          }
+        });
+    });
   }
 }

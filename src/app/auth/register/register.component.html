@@ -23,6 +23,9 @@
       <span *ngIf="form.get('email').errors.email">
         Некорректный email
       </span>
+      <span *ngIf="form.get('email').errors.forbiddenEmail">
+        Email уже существует
+      </span>
     </span>
   </div>
   <div
