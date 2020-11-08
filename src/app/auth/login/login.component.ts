@@ -73,6 +73,8 @@ export class LoginComponent implements OnInit {
        window.localStorage.setItem('user', JSON.stringify(user));
 
        this.message.text = '';
+
+       this.router.navigate(['/system', 'bill']);
     });
   }
 }
