@@ -2,9 +2,15 @@
   "users": [
     {
       "id": 1,
-      "email": "u608110@mail.ru",
+      "email": "u608110@gmail.com",
       "password": "12qwasZX",
       "name": "Администратор"
+    },
+    {
+      "email": "u608111@gmail.com",
+      "password": "12qwasZX",
+      "name": "Belchenkov",
+      "id": 2
     }
   ],
   "bill": {

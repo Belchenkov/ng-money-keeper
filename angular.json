@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/vendor.css",
+              "src/assets/theme.css"
             ],
             "scripts": []
           },
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-money-keeper"
+    }
+  },
+  "defaultProject": "ng-money-keeper",
+  "cli": {
+    "analytics": false
+  }
 }
