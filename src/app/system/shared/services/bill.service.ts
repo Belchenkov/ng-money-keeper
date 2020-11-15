@@ -4,18 +4,18 @@ import { Observable } from 'rxjs';
 
 import { Bill } from '../models/bill.model';
 import { environment } from '../../../../environments/environment';
+import { BaseApi } from '../../../shared/core/base-api';
 
 @Injectable()
-export class BillService {
-  apiUrl: string = environment.apiUrl;
+export class BillService extends BaseApi {
   fixerAccessKey: string = environment.fixerAccessKey;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(public http: HttpClient) {
+    super(http);
+  }
 
   getBill(): Observable<Bill> {
-    return this.http.get<Bill>(`${this.apiUrl}/bill`);
+    return this.get(`/bill`);
   }
 
   getCurrency(base: string = 'RUB'): Observable<any> {
