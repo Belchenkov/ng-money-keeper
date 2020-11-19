@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Category } from '../shared/models/category.model';
+
 @Component({
   selector: 'app-records-page',
   templateUrl: './records-page.component.html',
@@ -10,6 +12,9 @@ export class RecordsPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  newCategoryAdd(category: Category): void {
   }
 
 }

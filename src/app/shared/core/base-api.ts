@@ -21,6 +21,7 @@ export class BaseApi {
   }
 
   public post(url: string = '', data: any = {}): Observable<any> {
+    console.log(data)
     return this.http.post(this.getUrl(url), data);
   }
 
