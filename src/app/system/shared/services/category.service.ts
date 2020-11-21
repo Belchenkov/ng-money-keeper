@@ -12,7 +12,16 @@ export class CategoryService extends BaseApi {
     super(http);
   }
 
+  getCategories(): Observable<Category[]> {
+    return this.get('/categories');
+  }
+
   addCategory(category: Category): Observable<Category> {
     return this.post('/categories', category);
   }
+
+  editCategory(category: Category): Observable<Category> {
+    return this.put(`/categories/${category.id}`, category);
+  }
+
 }

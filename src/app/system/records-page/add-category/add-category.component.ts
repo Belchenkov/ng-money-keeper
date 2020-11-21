@@ -10,7 +10,7 @@ import { Category } from '../../shared/models/category.model';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent {
-  @Output() onCategoryAdd = new EventEmitter<Category>();
+  @Output() categoryAdd = new EventEmitter<Category>();
 
   constructor(
     private categoryService: CategoryService
@@ -31,7 +31,7 @@ export class AddCategoryComponent {
         form.reset();
         form.form.patchValue({ capacity: 1 });
 
-        this.onCategoryAdd.emit(category);
+        this.categoryAdd.emit(category);
       });
   }
 }

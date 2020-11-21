@@ -45,7 +45,11 @@
           class="form-help-text"
         >Обязательное поле</span>
       </div>
-      <button type="submit" class="btn btn-primary">Добавить</button>
+      <button
+        [disabled]="f.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >Добавить</button>
     </form>
   </div>
 </div>
