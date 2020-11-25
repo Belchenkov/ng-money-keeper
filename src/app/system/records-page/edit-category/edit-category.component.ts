@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { Category } from '../../shared/models/category.model';
 import { CategoryService } from '../../shared/services/category.service';
@@ -10,7 +11,9 @@ import { Message } from '../../../shared/models/message.model';
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.scss']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit, OnDestroy {
+  sub$: Subscription;
+
   @Input() categories: Category[] = [];
   @Output() categoryEdit = new EventEmitter<Category>();
 
@@ -41,11 +44,17 @@ export class EditCategoryComponent implements OnInit {
 
     const category = new Category(capacity, name, +this.currentCategoryId);
 
-    this.categoryService.editCategory(category)
+    this.sub$ = this.categoryService.editCategory(category)
       .subscribe((updatedCategory: Category) => {
         this.categoryEdit.emit(updatedCategory);
         this.message.text = 'Категория успешно отредактирована';
         window.setTimeout(() => this.message.text = '', 5000);
       });
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub$) {
+      this.sub$.unsubscribe();
+    }
   }
 }
