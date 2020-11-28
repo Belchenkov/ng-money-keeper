@@ -32,6 +32,11 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "capacity": 2000,
+      "name": "Работа",
+      "id": 4
     }
   ],
   "events": [
@@ -74,6 +79,22 @@
       "date": "10.06.2017 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
+    },
+    {
+      "type": "income",
+      "amount": 30000,
+      "category": 4,
+      "date": "25.11.2020 16:37:56",
+      "description": "Фондовый рынок",
+      "id": 6
+    },
+    {
+      "type": "outcome",
+      "amount": 30000,
+      "category": 2,
+      "date": "25.11.2020 16:47:46",
+      "description": "На покушать",
+      "id": 7
     }
   ]
 }

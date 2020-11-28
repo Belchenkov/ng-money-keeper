@@ -22,9 +22,6 @@ export class UserService extends BaseApi {
   }
 
   register(user: User): Observable<User> {
-    return this.post(`/users`, user)
-      .pipe(
-        map((response: User) => response)
-      );
+    return this.post(`/users`, user);
   }
 }
