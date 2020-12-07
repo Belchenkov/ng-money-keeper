@@ -16,4 +16,8 @@ export class EventsService extends BaseApi {
     return this.post('/events', event);
   }
 
+  getEvents(): Observable<AppEvent[]> {
+    return this.get('/events');
+  }
+
 }
