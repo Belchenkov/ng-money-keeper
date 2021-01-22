@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 100000,
+    "value": 96500,
     "currency": "RUB"
   },
   "categories": [
@@ -90,11 +90,19 @@
     },
     {
       "type": "outcome",
-      "amount": 30000,
-      "category": 2,
-      "date": "25.11.2020 16:47:46",
-      "description": "На покушать",
+      "amount": 3000,
+      "category": 4,
+      "date": "07.12.2020 13:54:36",
+      "description": "s",
       "id": 7
+    },
+    {
+      "type": "outcome",
+      "amount": 500,
+      "category": 3,
+      "date": "07.12.2020 13:55:15",
+      "description": "Колеса",
+      "id": 8
     }
   ]
 }
