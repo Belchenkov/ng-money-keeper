@@ -48,6 +48,4 @@ export class BillPageComponent implements OnInit, OnDestroy {
       this.sub2$.unsubscribe();
     }
   }
-
-
 }
