@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './auth/auth.module';
-import { SystemModule } from './system/system.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './shared/services/user.service';
@@ -19,7 +18,6 @@ import { AuthService } from './shared/services/auth.service';
     AuthModule,
     HttpClientModule,
     AppRoutingModule,
-    SystemModule,
     BrowserAnimationsModule
   ],
   providers: [
