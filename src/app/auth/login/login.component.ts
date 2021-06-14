@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit {
               text: 'Можете зайти в систему',
               type: 'success'
           });
+        } else if (params.accessDenied) {
+          this.showMessage({
+            text: 'Нужно совершить вход в систему!',
+            type: 'warning'
+          });
         }
       });
 
