@@ -23,7 +23,7 @@ export class HistoryFilterComponent implements OnInit {
   ];
 
   types = [
-    { type: 'income', label: 'День' },
+    { type: 'income', label: 'Доход' },
     { type: 'outcome', label: 'Расход' },
   ];
 

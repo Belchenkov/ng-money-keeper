@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, zip } from 'rxjs';
+import * as moment from 'moment';
 
 import { CategoryService } from '../shared/services/category.service';
 import { EventsService } from '../shared/services/events.service';
@@ -16,8 +17,9 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   categories: Category[] = [];
   events: AppEvent[] = [];
-  isLoaded = false;
   chartData = [];
+  filteredEvents: AppEvent[] = [];
+  isLoaded = false;
   isFilterVisible = false;
 
   constructor(
@@ -31,9 +33,16 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.eventService.getEvents(),
     ).subscribe((data: [Category[], AppEvent[]]) => {
       [this.categories, this.events] = data;
+
+      this.setOriginalEvents();
       this.calculateChartData();
+
       this.isLoaded = true;
     });
+  }
+
+  private setOriginalEvents() {
+    this.filteredEvents = this.events.slice();
   }
 
   calculateChartData(): void {
@@ -59,12 +68,32 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.toggleFilterVisibility(true);
   }
 
-  onFilterApply(filterData) {
-    console.log(filterData);
-  }
-
   onFilterCancel() {
     this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+    this.calculateChartData();
+  }
+
+  onFilterApply(filterData) {
+    this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+
+    const startPeriod = moment().startOf(filterData.period).startOf('d');
+    const endPeriod = moment().endOf(filterData.period).endOf('d');
+
+    this.filteredEvents = this.filteredEvents
+    .filter( e => {
+      return filterData.types.indexOf(e.type) !== -1;
+    })
+    .filter(e => {
+      return filterData.categories.indexOf(e.category.toString()) !== -1;
+    })
+    .filter(e => {
+      const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+      return momentDate.isBetween(startPeriod, endPeriod);
+    });
+
+    this.calculateChartData();
   }
 
   ngOnDestroy() {
