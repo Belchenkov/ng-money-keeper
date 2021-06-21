@@ -4,10 +4,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RouterModule } from '@angular/router';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    NotFoundComponent
+    NotFoundComponent,
+    LoaderComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -19,7 +21,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ReactiveFormsModule,
     FormsModule,
     NgxChartsModule,
-    NotFoundComponent
+    NotFoundComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
