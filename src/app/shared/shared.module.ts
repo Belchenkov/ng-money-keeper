@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { RouterModule } from '@angular/router';
+
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NotFoundComponent
+  ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    RouterModule
   ],
   exports: [
     ReactiveFormsModule,
     FormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NotFoundComponent
   ]
 })
 export class SharedModule { }
