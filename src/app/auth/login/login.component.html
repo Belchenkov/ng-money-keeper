@@ -1,6 +1,7 @@
 <p class="text-xs-center">Войдите для работы</p>
 
 <div
+  @fade
   *ngIf="message.text"
   class="alert text-center alert-{{ message.type }}"
 >{{ message.text }}</div>
