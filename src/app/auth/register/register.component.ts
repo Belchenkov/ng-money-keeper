@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { Message } from '../../shared/models/message.model';
 import { UserService } from '../../shared/services/user.service';
@@ -20,8 +21,16 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {
+    title.setTitle('Регистрация');
+    meta.addTags([
+      { name: 'keywords', content: 'регистрация,новый пользователь,система' },
+      { name: 'description', content: 'Страница для регистрации нового пользователя' }
+    ]);
+  }
 
   ngOnInit(): void {
     this.message = new Message('danger', '');
